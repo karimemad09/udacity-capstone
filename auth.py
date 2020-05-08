@@ -1,5 +1,5 @@
 import json
-from flask import request, _request_ctx_stack
+from flask import request
 from functools import wraps
 from jose import jwt
 from urllib.request import urlopen
@@ -52,7 +52,9 @@ def get_token_auth_header():
     parts = auth.split()
     if parts[0].lower() != 'bearer':
         raise AuthError({'code': 'invalid_header',
-                         'description': 'Authorization header must start with "Bearer".'}, 401)
+                         'description':
+                         'Authorization header must start with "Bearer".'},
+                        401)
 
     elif len(parts) == 1:
         raise AuthError({'code': 'invalid_header',
@@ -60,7 +62,8 @@ def get_token_auth_header():
 
     elif len(parts) > 2:
         raise AuthError({'code': 'invalid_header',
-                         'description': 'Authorization header must be bearer token.'}, 401)
+                         'description':
+                         'Authorization header must be bearer token.'}, 401)
 
     token = parts[1]
     return token
@@ -72,7 +75,8 @@ def get_token_auth_header():
 
     it should raise an AuthError if permissions are not included in the payload
         !!NOTE check your RBAC settings in Auth0
-    it should raise an AuthError if the requested permission string is not in the payload permissions array
+    it should raise an AuthError if the requested permission string is not in
+    the payload permissions array
     return true otherwise
 '''
 
@@ -80,12 +84,13 @@ def get_token_auth_header():
 def check_permissions(permission, payload):
     if 'permissions' not in payload:
         raise AuthError({'code': 'invalid_classsssims',
-                         'description': 'permission not included in JWT.'}, 400)
+                         'description':
+                         'permission not included in JWT.'}, 400)
 
     if permission not in payload['permissions']:
         raise AuthError({
-            'code': 'unauthorized',
-            'description': 'permission not found.'
+            'code': 'Unauthorized',
+            'description': 'Permission not found.'
         }, 403)
 
     return True
@@ -142,12 +147,16 @@ def verify_decode_jwt(token):
 
         except jwt.JWTClaimsError:
             raise AuthError({'code': 'invalid_claims',
-                             'description': 'Incorrect claims. Please, check the audience and issuer.'}, 401)
-        except:
+                             'description':
+                             'Incorrect claims. Please, check the audience'},
+                            401)
+        except Exception:
             raise AuthError({'code': 'invalid_header',
-                             'description': 'Unable to parse authentication token.'}, 401)
+                             'description':
+                             'Unable to parse authentication token.'}, 401)
     raise AuthError({'code': 'invalid_header',
-                     'description': 'Unable to find the appropriate key.'}, 401)
+                     'description': 'Unable to find the appropriate key.'},
+                    401)
 
 
 '''
@@ -156,8 +165,10 @@ def verify_decode_jwt(token):
 
     it should use the get_token_auth_header method to get the token
     it should use the verify_decode_jwt method to decode the jwt
-    it should use the check_permissions method validate claims and check the requested permission
-    return the decorator which passes the decoded payload to the decorated method
+    it should use the check_permissions method validate
+     claims and check the requested permission
+    return the decorator which passes the decoded
+    payload to the decorated method
 '''
 
 

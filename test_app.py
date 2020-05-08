@@ -3,7 +3,7 @@ import unittest
 import json
 from flask_sqlalchemy import SQLAlchemy
 from app import create_app
-from models import setup_db, Actor, Movie
+from models import setup_db
 
 
 class CastingAgencyTestCase(unittest.TestCase):
@@ -50,7 +50,8 @@ class CastingAgencyTestCase(unittest.TestCase):
     ###################
     def test_get_all_actors(self):
         res = self.client().get(
-            '/actors', headers={"Authorization": "Bearer {}".format(self.producer_headers)})
+            '/actors', headers={"Authorization": "Bearer {}".
+                                format(self.producer_headers)})
         data = json.loads(res.data)
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data["success"], True)
@@ -69,7 +70,8 @@ class CastingAgencyTestCase(unittest.TestCase):
     ##################
     def test_get_all_movies(self):
         res = self.client().get(
-            '/movies', headers={"Authorization": "Bearer {}".format(self.producer_headers)})
+            '/movies', headers={"Authorization": "Bearer {}".
+                                format(self.producer_headers)})
         data = json.loads(res.data)
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data["success"], True)
@@ -88,7 +90,8 @@ class CastingAgencyTestCase(unittest.TestCase):
     ###################
     def test_create_new_actor(self):
         res = self.client().post('/actors', json=self.new_actor,
-                                 headers={"Authorization": "Bearer {}".format(self.producer_headers)})
+                                 headers={"Authorization": "Bearer {}".
+                                          format(self.producer_headers)})
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 200)
@@ -108,7 +111,8 @@ class CastingAgencyTestCase(unittest.TestCase):
     ###################
     def test_create_new_movie(self):
         res = self.client().post('/movies', json=self.new_movie,
-                                 headers={"Authorization": "Bearer {}".format(self.producer_headers)})
+                                 headers={"Authorization": "Bearer {}".
+                                          format(self.producer_headers)})
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 200)
@@ -127,11 +131,13 @@ class CastingAgencyTestCase(unittest.TestCase):
     ###################
 
     def test_update_actor(self):
-        self.client().post('/actors/', json=self.new_actor,
+        self.client().post('/actors', json=self.new_actor,
                            headers=self.producer_headers)
         res = self.client().patch('/actors/4', json={'name': 'ahmed',
                                                      'age': 25,
-                                                     'gender': 'male'}, headers={"Authorization": "Bearer {}".format(self.producer_headers)})
+                                                     'gender': 'male'},
+                                  headers={"Authorization": "Bearer {}".
+                                           format(self.producer_headers)})
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 200)
@@ -141,12 +147,14 @@ class CastingAgencyTestCase(unittest.TestCase):
     def test_404_update_actor(self):
         res = self.client().patch('/actors/100', json={'name': 'ahmed',
                                                        'age': 25,
-                                                       'gender': 'male'}, headers={"Authorization": "Bearer {}".format(self.producer_headers)})
+                                                       'gender': 'male'},
+                                  headers={"Authorization": "Bearer {}".
+                                           format(self.producer_headers)})
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 404)
         self.assertEqual(data["success"], False)
-        self.assertEqual(data["message"], "Not Found")
+        self.assertEqual(data["message"], "Resource Not Found")
         self.assertTrue(len(data['actors']))
 
     ###################
@@ -157,7 +165,9 @@ class CastingAgencyTestCase(unittest.TestCase):
         self.client().post('/movies', json=self.new_movie,
                            headers=self.producer_headers)
         res = self.client().patch(
-            '/movies/5', json={'title': 'Avenger2'}, headers={"Authorization": "Bearer {}".format(self.producer_headers)})
+            '/movies/5', json={'title': 'Avenger2'},
+            headers={"Authorization": "Bearer {}".
+                     format(self.producer_headers)})
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 200)
@@ -166,12 +176,14 @@ class CastingAgencyTestCase(unittest.TestCase):
 
     def test_404_update_movie(self):
         res = self.client().patch(
-            '/movies/100', json={'title': 'X-Men'}, headers={"Authorization": "Bearer {}".format(self.producer_headers)})
+            '/movies/100', json={'title': 'X-Men'},
+            headers={"Authorization": "Bearer {}".
+                     format(self.producer_headers)})
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 404)
         self.assertEqual(data["success"], False)
-        self.assertEqual(data["message"], "Not Found")
+        self.assertEqual(data["message"], "Resource Not Found")
         self.assertTrue(len(data['movies']))
     ###################
     # Test Delete Actor
@@ -183,7 +195,8 @@ class CastingAgencyTestCase(unittest.TestCase):
         self.client().post('/actors', json=self.new_actor,
                            headers=self.producer_headers)
         res = self.client().delete('/actors/2',
-                                   headers={"Authorization": "Bearer {}".format(self.producer_headers)})
+                                   headers={"Authorization": "Bearer {}".
+                                            format(self.producer_headers)})
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 200)
@@ -192,12 +205,13 @@ class CastingAgencyTestCase(unittest.TestCase):
 
     def test_404_delete_actor(self):
         res = self.client().delete('/actors/50',
-                                   headers={"Authorization": "Bearer {}".format(self.producer_headers)})
+                                   headers={"Authorization": "Bearer {}".
+                                            format(self.producer_headers)})
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 404)
         self.assertEqual(data["success"], False)
-        self.assertEqual(data["message"], "Not Found")
+        self.assertEqual(data["message"], "Resource Not Found")
         self.assertTrue(len(data['actors']))
 
     ###################
@@ -210,7 +224,8 @@ class CastingAgencyTestCase(unittest.TestCase):
         self.client().post('/movies', json=self.new_actor,
                            headers=self.producer_headers)
         res = self.client().delete('/movies/2',
-                                   headers={"Authorization": "Bearer {}".format(self.producer_headers)})
+                                   headers={"Authorization": "Bearer {}".
+                                            format(self.producer_headers)})
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 200)
@@ -219,24 +234,23 @@ class CastingAgencyTestCase(unittest.TestCase):
 
     def test_404_delete_movie(self):
         res = self.client().delete('/movies/50',
-                                   headers={"Authorization": "Bearer {}".format(self.producer_headers)})
+                                   headers={"Authorization": "Bearer {}".
+                                            format(self.producer_headers)})
         data = json.loads(res.data)
 
         self.assertEqual(res.status_code, 404)
         self.assertEqual(data["success"], False)
-        self.assertEqual(data["message"], "Not Found")
+        self.assertEqual(data["message"], "Resource Not Found")
         self.assertTrue(len(data['movies']))
 
     ################
     # Test for assitant
-    ################
-
-    ###########
     # Test Actor get
     ###################
     def test_get_all_actors_assistant(self):
         res = self.client().get(
-            '/actors', headers={"Authorization": "Bearer {}".format(self.assistant_headers)})
+            '/actors', headers={"Authorization": "Bearer {}".
+                                format(self.assistant_headers)})
         data = json.loads(res.data)
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data["success"], True)
@@ -255,7 +269,8 @@ class CastingAgencyTestCase(unittest.TestCase):
     ##################
     def test_get_all_movies_assistant(self):
         res = self.client().get(
-            '/movies', headers={"Authorization": "Bearer {}".format(self.assistant_headers)})
+            '/movies', headers={"Authorization": "Bearer {}".
+                                format(self.assistant_headers)})
         data = json.loads(res.data)
         self.assertEqual(res.status_code, 200)
         self.assertEqual(data["success"], True)

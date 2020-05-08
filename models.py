@@ -1,8 +1,7 @@
 import os
-from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-from flask_migrate import Migrate
+# from flask_migrate import Migrate
 
 database_path = os.environ.get('DATABASE_URL')
 
@@ -20,7 +19,7 @@ def setup_db(app, database_path=database_path):
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.app = app
     db.init_app(app)
-    migrate = Migrate(app, db)
+    # migrate = Migrate(app, db)
 
 
 ###########################
@@ -45,7 +44,8 @@ class Actor(db.Model):
     age = db.Column(db.Integer, nullable=False)
     gender = db.Column(db.String(), nullable=False)
     actor_in_movies = db.relationship(
-        'Movie', secondary=actors_movies, backref=db.backref('movies_actors', lazy='dynamic'))
+        'Movie', secondary=actors_movies, backref=db.backref('movies_actors',
+                                                             lazy='dynamic'))
 
     def __init__(self, name, age, gender):
         self.name = name
