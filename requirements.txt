@@ -30,3 +30,4 @@ virtualenv==16.7.5
 Werkzeug==0.15.6
 wrapt==1.11.2
 WTForms==2.2.1
+python-jose==1.0.0
