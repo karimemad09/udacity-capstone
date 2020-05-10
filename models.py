@@ -1,7 +1,7 @@
 import os
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-# from flask_migrate import Migrate
+from flask_migrate import Migrate
 
 database_path = os.environ.get('DATABASE_URL')
 
@@ -19,18 +19,20 @@ def setup_db(app, database_path=database_path):
     app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
     db.app = app
     db.init_app(app)
-    # migrate = Migrate(app, db)
+    db.create_all()
+
+    migrate = Migrate(app, db)
 
 
 ###########################
 # ACTORS IN MOVIES RELATION Many to Many MODEL #
 ##########################
-actors_movies = db.Table('actors_movies',
-                         db.Column('actor_id', db.Integer,
-                                   db.ForeignKey('actors.id')),
-                         db.Column('movie_id', db.Integer,
-                                   db.ForeignKey('movies.id'))
-                         )
+# actors_movies = db.Table('actors_movies',
+#                          db.Column('actor_id', db.Integer,
+#                                    db.ForeignKey('actors.id')),
+#                          db.Column('movie_id', db.Integer,
+#                                    db.ForeignKey('movies.id'))
+#                          )
 
 ########################
 # ACTOR MODEL

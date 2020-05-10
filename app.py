@@ -4,6 +4,7 @@ from models import setup_db, Actor, Movie
 from auth import AuthError, requires_auth
 
 
+
 def create_app(test_config=None):
     # create and configure the app
     app = Flask(__name__)
@@ -277,6 +278,7 @@ def create_app(test_config=None):
 
 
 app = create_app()
+
 
 if __name__ == '__main__':
     app.run()
