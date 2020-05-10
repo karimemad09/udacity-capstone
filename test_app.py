@@ -283,3 +283,7 @@ class CastingAgencyTestCase(unittest.TestCase):
         self.assertEqual(res.status_code, 401)
         self.assertEqual(data["success"], False)
         self.assertEqual(data["message"], "Unauthorized Error")
+        
+# Make the tests conveniently executable
+if __name__ == "__main__":
+  unittest.main()

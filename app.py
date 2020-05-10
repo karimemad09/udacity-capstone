@@ -15,6 +15,10 @@ def create_app(test_config=None):
     # actor.actor_in_movies.append(movie)
     # db.session.add(actor)
     # db.session.commit()
+    @app.route('/')
+    def index():
+        return jsonify({'message': 'Udacity Capestone Project'}
+                       )
     #########################
     # Get Actors
     #########################
