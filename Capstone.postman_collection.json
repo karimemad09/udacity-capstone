@@ -82,15 +82,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:5000/actors",
-							"protocol": "http",
+							"raw": "https://karim-capstone.herokuapp.com/actors",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"karim-capstone",
+								"herokuapp",
+								"com"
 							],
-							"port": "5000",
 							"path": [
 								"actors"
 							]
@@ -127,15 +125,13 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:5000/movies",
-							"protocol": "http",
+							"raw": "https://karim-capstone.herokuapp.com/movies",
+							"protocol": "https",
 							"host": [
-								"127",
-								"0",
-								"0",
-								"1"
+								"karim-capstone",
+								"herokuapp",
+								"com"
 							],
-							"port": "5000",
 							"path": [
 								"movies"
 							]
@@ -414,7 +410,7 @@
 				"bearer": [
 					{
 						"key": "token",
-						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ii1kQmpHdjRwT185MmFpVXpGY2hKaSJ9.eyJpc3MiOiJodHRwczovL2tlbmluby5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWU4NjQ1ZWVmMjNiYzIwYmYwYzRkNDJjIiwiYXVkIjoiY2Fwc3RvbmUiLCJpYXQiOjE1ODg5NzI1NTEsImV4cCI6MTU4ODk3OTc1MSwiYXpwIjoiMjJtNnl1RHNteXJ1SUF4ZHI3d1dXTkVVQVFhZmtueVYiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTphY3RvcnMiLCJkZWxldGU6bW92aWVzIiwiZ2V0OmFjdG9ycyIsImdldDptb3ZpZXMiLCJwYXRjaDphY3RvcnMiLCJwYXRjaDptb3ZpZXMiLCJwb3N0OmFjdG9ycyIsInBvc3Q6bW92aWVzIl19.mwNSPps73sYh3f2T3hme4hnTPzqxgUPgy3GguSNSKMg377Ma9jYLN5EQMyeFQQXrYBUR-wpN11jV1LGf8y-c4XwBccSfvBzdhcKnQ99Ec9MxGDETWNUEBH8gHnxHOuBWFlsI_lCcnHsE4LgKgpMn5LjPQu9V_MBR3O3rtsLpQnry96C7ZxV8HXs5xHxMrPHq3dzbQuQbNRxqOIk8N8ShCdFHLNeO-7ebbEf2ZiUmJSXWrlJ7NfgSumZcgvyZ9EqlWEyQO8cwfNHZAw6wVmuszb2Ey-l41DPkgGW7YFQGfNmGSWlX--K8WDds5coH7bSGxRAB1QqL_14pYme8ULFgzg",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ii1kQmpHdjRwT185MmFpVXpGY2hKaSJ9.eyJpc3MiOiJodHRwczovL2tlbmluby5hdXRoMC5jb20vIiwic3ViIjoiYXV0aDB8NWU4NjQ1ZWVmMjNiYzIwYmYwYzRkNDJjIiwiYXVkIjoiY2Fwc3RvbmUiLCJpYXQiOjE1ODkxNDE3OTIsImV4cCI6MTU4OTE0ODk5MiwiYXpwIjoiMjJtNnl1RHNteXJ1SUF4ZHI3d1dXTkVVQVFhZmtueVYiLCJzY29wZSI6IiIsInBlcm1pc3Npb25zIjpbImRlbGV0ZTphY3RvcnMiLCJkZWxldGU6bW92aWVzIiwiZ2V0OmFjdG9ycyIsImdldDptb3ZpZXMiLCJwYXRjaDphY3RvcnMiLCJwYXRjaDptb3ZpZXMiLCJwb3N0OmFjdG9ycyIsInBvc3Q6bW92aWVzIl19.gVqVrX6-h8_faCcSDBzXSl1Km91OMpFP-hsMzu-dmDgM8OlIWdEQmyrTQ_T8yMx8hh3v607FQ2rlNzOhjIBfFyjotLGgJxs1ukB1CwP-Po5x9gYBD73Hxyrn94PuFzHD55nG6vvfZwTB77CaiptdlMjwt68u9-hkTgdtt5d0yBZtAwq7ZOETuTr-juLc-LQKj9_AtOkOezIcL18-f9QJ_5yUpdGMeM-oXp22ZYHEx33kuFWpAa_3jXJn-n8TzuwCpWYXIp9wte_T5J0GVu7zUAzEWIP9ig9lsgaViPQ2bpOZS2uXpPGTRs3xuMTJPod0o2_DSITPxEnVCnzDEHS5qw",
 						"type": "string"
 					}
 				]
